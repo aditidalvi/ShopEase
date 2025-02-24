@@ -6,17 +6,27 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProductCardView: View {
     let product: ProductDetailsModel
     var body: some View {
         VStack(spacing: 10) {
-            AsyncImage(url: URL(string: product.image), scale: 5.0)
+            WebImage(url: URL(string: product.image))
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                                .frame(height: 250)
+                                .padding()
+            // Adjusted size for better grid alignment
+                               
             Text(product.title)
                 .font(.title2)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)
+                .lineLimit(1)
         }
+        .padding()
+        .background(Color.white)
     }
 }
 

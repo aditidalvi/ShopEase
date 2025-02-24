@@ -12,11 +12,10 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: [GridItem()], spacing: 10, content: {
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 4),
+                                    GridItem(.flexible(), spacing: 4)], spacing: 4,content: {
                     ForEach(viewModel.products, id: \.id, content: { product in
                         ProductCardView(product: product)
-                            .padding()
-                            .background(.white)
                     })
                 })
                 .background(Color.gray)
