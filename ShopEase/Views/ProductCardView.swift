@@ -14,38 +14,25 @@ struct ProductCardView: View {
         ScrollView {
             ProductImageView(image: product.image)
                 .padding(.bottom, 20)
-            VStack(spacing: 10) {
-                VStack(alignment: .leading, spacing: 10) {
-                    Section(content: {
-                        Text(product.title)
-                            .font(.title2)
-                            .fontWeight(.medium)
-                        Text("₹\(product.price.rounded(), specifier: "%.0f")")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.green)
-                    })
-
-                }
-                .padding()
-                .background(Color.white)
-                .cornerRadius(12)
-                .shadow(radius: 5)
-                .padding(.bottom, 10)
-                VStack(alignment: .leading, spacing: 10) {
-                    Section(content: {
-                        Text(product.description)
-                    }, header: {
-                        Text("Description")
-                            .fontWeight(.medium)
-                            .font(.system(size: 20))
-                    })
-                }
-                .padding()
-                .background(Color.white)
-                .cornerRadius(12)
-                .shadow(radius: 5)
+            VStack(alignment: .leading, spacing: 10) {
+                Section(content: {
+                    Text(product.title)
+                        .font(.title2)
+                        .fontWeight(.medium)
+                    Text("₹\(product.price.rounded(), specifier: "%.0f")")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.green)
+                })
+                Section(content: {
+                    Text(product.description)
+                }, header: {
+                    Text("Description")
+                        .fontWeight(.medium)
+                        .font(.system(size: 20))
+                })
             }
+            .padding()
         }
         Spacer()
     }
