@@ -9,6 +9,7 @@ import Foundation
 
 class ShopEaseViewModel: ObservableObject {
     @Published var products: [ProductDetailsModel] = []
+    let title: String = "ShopEase"
     
     init() {
         fetchDetails()

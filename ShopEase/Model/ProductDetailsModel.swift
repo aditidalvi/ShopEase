@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductDetailsModel: Codable {
+struct ProductDetailsModel: Codable, Hashable {
     let id: Int
     let title: String
     let price: Double
@@ -15,9 +15,18 @@ struct ProductDetailsModel: Codable {
     let category: String
     let image: String
     let rating: Rating
+    
+    static func == (lhs: ProductDetailsModel, rhs: ProductDetailsModel) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
-struct Rating: Codable {
+struct Rating: Codable, Hashable {
     let rate: Double
     let count: Int
+    let id = UUID().uuidString
+    
+    static func == (lhs: Rating, rhs: Rating) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
